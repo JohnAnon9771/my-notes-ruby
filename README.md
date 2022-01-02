@@ -50,7 +50,7 @@ This project aims to improve my skills with rails as well as being a project for
 
 ## :sparkles: Features
 
-- [x] Authentication with or less Github
+- [x] Authentication with or without Github
 - [ ] Add possibility to add todo list
 - [ ] Get repositories from Github if logged with Github
 - [ ] Add possibility to add todo list and notes for each repository

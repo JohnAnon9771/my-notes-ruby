@@ -32,3 +32,8 @@
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+# Ignore javascript of packages. It is only intellisense of Tailwindcss
+node_modules
+package.json
+yarn.lock
