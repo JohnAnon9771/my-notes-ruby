@@ -1,1 +1,51 @@
-<%= button_to 'Login com Github', user_github_omniauth_authorize_path, method: :post, data: { turbo: false } %>
+<main class='font-sans grid place-items-center h-[100vh] bg-gray-200'>
+  <div class='w-full h-full sm:h-auto md:h-auto lg:h-auto max-w-sm bg-white p-5 rounded-md shadow-md'>
+    <div class='mb-2'>
+      <h3>Log in.</h3>
+      <h1 class='font-bold text-lg'>Welcome Back!</h1>
+    </div>
+
+    <%= form_with model: @user, url: user_session_path, class: '' do |form| %>
+      <%= form.label :name %>
+      <%= form.text_field :name, required: true, placeholder: 'your name or nickname', class: 'block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400' %>
+
+      <%= form.label :email %>
+      <%= form.email_field :email, required: true, placeholder: 'typeyouremail@email.com', class: 'block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400' %>
+
+      <%= form.label :password %>
+      <%= form.password_field :password, required: true, class: 'block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400' %>
+
+      <div class='flex items-center justify-between text-sm pt-2'>
+        <span class='flex items-center gap-2'>
+          <%= form.check_box :remember_me, class: 'rounded-sm' %>
+          Remember me
+        </span>
+
+        <%= link_to 'Forgot password?', new_user_password_path, class: 'font-bold' %>
+      </div>
+
+      <%= form.submit 'Log in', class: 'mt-6 w-full px-3 py-2 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-700' %>
+    <% end %>
+
+    <span class='flex items-center justify-center gap-1 text-gray-400 py-4'>
+      <svg class='h-[1px] w-full' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' preserveAspectRatio='none' fill='currentColor'>
+        <path d='M0,0 L1,0 L1,1 L0,1'/>
+      </svg>
+      or
+      <svg class='h-[1px] w-full' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' preserveAspectRatio='none' fill='currentColor'>
+        <path d='M0,0 L1,0 L1,1 L0,1'/>
+      </svg>
+    </span>
+
+    <%= button_to user_github_omniauth_authorize_path, data: { turbo: false }, method: :post, class: 'flex items-center justify-center container bg-black px-3 py-2 text-white gap-2 rounded-md hover:shadow-md' do %>
+      <i data-feather='github' class='stroke-1'></i>
+      <span>Continue with Github</span>
+    <% end %>
+
+    <div class="w-full text-center">
+      <span class='inline-block align-middle pt-3'>
+        Don't have an account? <%= link_to 'Create now', new_user_registration_path, class: 'font-bold' %>
+      </span>
+    </div>
+  </div>
+</main>
