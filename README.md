@@ -51,9 +51,9 @@ This project aims to improve my skills with rails as well as being a project for
 ## :sparkles: Features
 
 - [x] Authentication with or less Github
-- [] Add possibility to add todo list
-- [] Get repositories from Github if logged with Github
-- [] Add possibility to add todo list and notes for each repository
+- [ ] Add possibility to add todo list
+- [ ] Get repositories from Github if logged with Github
+- [ ] Add possibility to add todo list and notes for each repository
 
 ## :rocket: Technologies
 
@@ -67,7 +67,7 @@ The following tools were used in this project:
 
 ## :white_check_mark: Requirements
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com),[Ruby](https://www.ruby-lang.org/) and [Rails](https://rubyonrails.org/) gem installed.
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com), [Ruby](https://www.ruby-lang.org/) and [Rails](https://rubyonrails.org/) gem installed.
 
 ## :checkered_flag: Starting
 
