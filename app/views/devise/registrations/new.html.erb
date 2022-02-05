@@ -1,29 +1,45 @@
-<h2>Sign up</h2>
+<main class='font-sans grid place-items-center h-[100vh] bg-gray-200'>
+  <div class='w-full h-full sm:h-auto md:h-auto lg:h-auto max-w-sm bg-white p-5 rounded-md shadow-md'>
+    <div class='mb-2'>
+      <h3>Sign up.</h3>
+      <h1 class='font-bold text-lg'>Welcome!</h1>
+    </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_with model: @user, url: registration_path(@user) do |form| %>
+      <%= form.label :name %>
+      <%= form.text_field :name, required: true, placeholder: 'your name or nickname', class: 'block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400' %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= form.label :email %>
+      <%= form.email_field :email, required: true, placeholder: 'typeyouremail@email.com', class: 'block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400' %>
+
+      <%= form.label :password %>
+      <%= form.password_field :password, required: true, class: 'block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400' %>
+
+      <%= form.label :password_confirmation %>
+      <%= form.password_field :password_confirmation, required: true, class: 'block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400' %>
+
+      <%= form.submit 'Sign up', class: 'mt-6 w-full px-3 py-2 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-700 cursor-pointer' %>
+    <% end %>
+
+    <span class='flex items-center justify-center gap-1 text-gray-400 py-4'>
+      <svg class='h-[1px] w-full' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' preserveAspectRatio='none' fill='currentColor'>
+        <path d='M0,0 L1,0 L1,1 L0,1'/>
+      </svg>
+      or
+      <svg class='h-[1px] w-full' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' preserveAspectRatio='none' fill='currentColor'>
+        <path d='M0,0 L1,0 L1,1 L0,1'/>
+      </svg>
+    </span>
+
+    <%= button_to user_github_omniauth_authorize_path, data: { turbo: false }, method: :post, class: 'flex items-center justify-center container bg-black px-3 py-2 text-white gap-2 rounded-md hover:shadow-md' do %>
+      <i data-feather='github' class='stroke-1'></i>
+      <span>Continue with Github</span>
+    <% end %>
+
+    <div class="w-full text-center">
+      <span class='inline-block align-middle pt-3'>
+        Have an account? <%= link_to 'Login now', user_session_path, class: 'font-bold' %>
+      </span>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</main>
