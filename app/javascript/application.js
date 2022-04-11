@@ -2,6 +2,7 @@
 import "@hotwired/turbo-rails";
 import "controllers";
 import feather from "feather-icons";
+import "flowbite";
 
 document.addEventListener("turbo:load", () => {
   feather.replace();
