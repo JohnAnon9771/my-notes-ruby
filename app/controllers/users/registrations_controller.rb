@@ -8,7 +8,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @user.save
       sign_in_and_redirect @user, event: :authentication
     else
-      render :new, status: :unprocessable_entity
+      flash[:error] = @user.errors.full_messages.join(", ")
+      redirect_to new_user_registration_path
     end
   end
 

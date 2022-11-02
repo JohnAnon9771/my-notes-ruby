@@ -1,11 +1,14 @@
 <main class='font-sans grid place-items-center h-[100vh] bg-gray-200'>
+  <% if flash.present?%>
+    <span><%= flash[:error] %></span>
+  <% end %>
   <div class='w-full h-full sm:h-auto md:h-auto lg:h-auto max-w-sm bg-white p-5 rounded-md shadow-md'>
     <div class='mb-2'>
       <h3>Sign up.</h3>
       <h1 class='font-bold text-lg'>Welcome!</h1>
     </div>
 
-    <%= form_with model: @user, url: registration_path(@user) do |form| %>
+    <%= form_with model: @user, url: registration_path(@user), data: { turbo: false } do |form| %>
       <%= form.label :name %>
       <%= form.text_field :name, required: true, placeholder: 'your name or nickname', class: 'block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400' %>
 
