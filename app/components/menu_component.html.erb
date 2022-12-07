@@ -1,0 +1,31 @@
+<section class="fixed left-0 top-0 bottom-0 flex flex-col justify-between bg-[#343a40] px-5 w-72 py-7">
+  <div class="flex flex-col gap-5">
+    <div class='flex items-center gap-2 p-3 bg-white rounded-lg' id='avatar' type='button' data-dropdown-toggle='userDropdown' data-dropdown-placement="bottom-start">
+      <img class="w-10 h-10 rounded-lg" src="<%= @user.avatar %>" alt="User dropdown">
+      <span><%= @user.name %></span>
+    </div>
+
+    <button class="flex text-gray-400 gap-3 rounded-md p-4 bg-white">
+      <i data-feather="search" class=""></i>
+
+      <span class="">Buscar notas...</span>
+    </button>
+  </div>
+
+  <ul class="h-1/2 text-white">
+    <li>
+      <a href="#" class="flex items-center gap-3 hover:bg-white hover:text-black rounded-lg p-4">
+        <i data-feather="file-text"></i>
+
+        Minhas notas
+      </a>
+    </li>
+
+  </ul>
+
+  <a class="flex text-black gap-3 rounded-md p-4 bg-white">
+    <i data-feather="settings"></i>
+
+    <span class="">Configurações</span>
+  </a>
+</section>
