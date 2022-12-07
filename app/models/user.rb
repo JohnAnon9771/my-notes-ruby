@@ -10,11 +10,13 @@ class User < ApplicationRecord
   validates :name, :password, :email, presence: true
   validates :password, length: { minimum: 6 }
 
+  has_many :notes, dependent: :delete_all
+
   def self.from_omniauth(auth)
-    user = find_by(email: auth.info.email)
+    user = find_by(email: auth.info.email, provider: nil, uid: nil)
 
     if user.present?
-      update_user_with(auth: auth, user: user)
+      update_user_with(auth: auth)
     else
       find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
         user.provider = auth.provider
@@ -27,13 +29,13 @@ class User < ApplicationRecord
     end
   end
 
-  def self.update_user_with(auth:, user:)
-    user.update(
+  def self.update_user_with(auth:)
+    update(
       provider: auth.provider,
       uid: auth.uid,
       avatar: auth.info.image
     )
 
-    user
+    self
   end
 end
